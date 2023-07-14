@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {Link as RouterLink} from 'react-router-dom';
-import { Google } from "@mui/icons-material";
+import Google from "@mui/icons-material/Google";
 import { Alert, Button, Grid, Link, TextField, Typography } from "@mui/material";
 import { AuthLayout } from '../layout/AuthLayout';
 import { useForm } from '../../hooks';
@@ -34,7 +34,7 @@ export const LoginPage = () => {
     return (
         <AuthLayout title='Login'>
 
-            <form onSubmit={onSubmit} className="animate__animated animate__fadeIn animate__faster">
+            <form onSubmit={onSubmit} className="animate__animated animate__fadeIn animate__faster" aria-label='submit-form'>
                 <Grid container>
 
                     <Grid item xs={ 12 } sx={{mt: 2}}>
@@ -55,6 +55,9 @@ export const LoginPage = () => {
                             placeholder="Contraseña"
                             fullWidth
                             name='password'
+                            inputProps={{
+                                'data-testid': 'password',
+                            }}
                             value={password}
                             onChange={onInputChange}/>
                     </Grid>
@@ -89,6 +92,7 @@ export const LoginPage = () => {
                                 onClick={onGoogleSignIn} 
                                 variant="contained"
                                 disabled = {isAuthenticating}
+                                aria-label="google-btn"
                                 fullWidth>
                                 <Google/>
                                 <Typography sx={{ml: 1}}>

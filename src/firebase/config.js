@@ -1,14 +1,24 @@
 import { initializeApp } from "firebase/app";
 import {getAuth} from 'firebase/auth';
 import {getFirestore} from 'firebase/firestore/lite';
+import { getEnvironments } from "../helpers/getEnvironments";
+
+const {
+    VITE_APIKEY,
+    VITE_AUTHDOMAIN,
+    VITE_PROJECTID,
+    VITE_STORAGEBUCKET,
+    VITE_MESSAGINGSENDERID,
+    VITE_APPID
+} = getEnvironments();
 
 const firebaseConfig = {
-    apiKey: "AIzaSyAG7w8Vktvu2GTLZdvBVS5Mm2yjPUBZM8Y",
-    authDomain: "udemy-proyectos.firebaseapp.com",
-    projectId: "udemy-proyectos",
-    storageBucket: "udemy-proyectos.appspot.com",
-    messagingSenderId: "266854909247",
-    appId: "1:266854909247:web:3787249890fe4b75d63f8a"
+    apiKey: VITE_APIKEY,
+    authDomain: VITE_AUTHDOMAIN,
+    projectId: VITE_PROJECTID,
+    storageBucket: VITE_STORAGEBUCKET,
+    messagingSenderId: VITE_MESSAGINGSENDERID,
+    appId: VITE_APPID
 };
 
 export const FirebaseApp = initializeApp(firebaseConfig);
